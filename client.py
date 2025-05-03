@@ -3,10 +3,12 @@ from socket import socket, AF_INET, SOCK_STREAM
 from constCS import HOST, PORT
 from time import time
 
+CLIENT_HOST = "54.209.100.105"
+
 def send_command(command):
     try:
         s = socket(AF_INET, SOCK_STREAM)
-        s.connect((HOST, PORT))
+        s.connect((CLIENT_HOST, PORT))
         encoded_data = json.dumps(command).encode('utf-8')
         s.send(encoded_data)
         response = s.recv(1024)
